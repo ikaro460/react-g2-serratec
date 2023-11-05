@@ -4,6 +4,7 @@ import Home from "./pages/Home";
 import Login from "./pages/Login";
 import { useRef, useState } from "react";
 import { Link } from "react-router-dom";
+import Cadastro from "./pages/Cadastro";
 
 function App() {
   const dropDownRef = useRef(null);
@@ -46,7 +47,8 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/home/:user" element={<Home />} />
-        <Route path="/login/:cliente" element={<Login />} />
+        <Route path="/login/" element={<Login />} />
+        <Route path="/cadastro/" element={<Cadastro />} />
         <Route path="*" element={<h1>Página Não Encontrada</h1>} />
       </Routes>
     </div>
