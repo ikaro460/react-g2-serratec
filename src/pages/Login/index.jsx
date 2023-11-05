@@ -28,17 +28,12 @@ export default function Login() {
 
   // function entrar(){}
   const entrar = () => {
-    users.map((cliente) => {
-      console.log(cliente);
-      if (login === "" || senha === "") {
-        console.log("Preencha os campos de login e senha");
-      } else if (login === cliente.nome && senha === cliente.senha) {
+    const matchingClientes = users.filter((cliente) => {
+      if (login === cliente.nome && senha === cliente.senha) {
         const info = {
           login: login,
           senha: senha,
         };
-
-        console.log(info);
 
         localStorage.setItem("info", JSON.stringify(info));
 
@@ -46,11 +41,17 @@ export default function Login() {
         setSenha("");
 
         navigate("/home/" + login);
-        //navigate(´/${login}´);
+        return true; // Cliente válido
       } else {
-        console.log("Login ou senha inválidos!");
+        return false; // Cliente inválido
       }
     });
+
+    if (matchingClientes.length === 0) {
+      console.log("Login ou senha inválidos!");
+    } else if (login === "" || senha === "") {
+      console.log("Preencha os campos de login e senha");
+    }
   };
 
   return (

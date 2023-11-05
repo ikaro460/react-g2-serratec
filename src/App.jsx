@@ -5,6 +5,7 @@ import Login from "./pages/Login";
 import { useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import Cadastro from "./pages/Cadastro";
+import LandingPage from "./pages/LandingPage";
 
 function App() {
   const dropDownRef = useRef(null);
@@ -45,7 +46,7 @@ function App() {
         </nav>
       </div>
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<LandingPage />} />
         <Route path="/home/:user" element={<Home />} />
         <Route path="/login/" element={<Login />} />
         <Route path="/cadastro/" element={<Cadastro />} />

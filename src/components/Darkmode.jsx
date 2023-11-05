@@ -9,7 +9,7 @@ export const ToggleDarkMode = () => {
   };
 
   return (
-    <div className={"isDarkMode" ? "darkmode" : "lightmode"}>
+    <div className={isDarkMode ? "darkmode" : "lightmode"}>
       <button className="toggle-button" onClick={toggleDarkMode}>
         <span className="sun-mode"></span>
         <span className="moon-mode"></span>
