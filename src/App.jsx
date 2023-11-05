@@ -1,3 +1,4 @@
+import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import { Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
@@ -16,7 +17,7 @@ function App() {
 
   return (
     <div className="container">
-      <div className="menu-container">
+      {/* <div className="menu-container">
         <button onClick={onClick} className="menu-button">
           <span className="tb">Menu</span>
           <img
@@ -41,10 +42,10 @@ function App() {
             </li>
             {/* <li>
               <a href="#">Login</a>
-            </li> */}
+            </li> 
           </ul>
         </nav>
-      </div>
+      </div> */}
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/home/:user" element={<Home />} />
