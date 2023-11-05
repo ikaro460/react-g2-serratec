@@ -1,59 +1,73 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import { useNavigate, useParams, useLocation } from "react-router-dom";
 import "./style.css";
-
-const dados = {
-  login: "Cintia",
-  senha: "123",
-};
+import { api } from "../../services/api";
 
 export default function Login() {
   const [login, setLogin] = useState("");
   const [senha, setSenha] = useState("");
+  const [users, setUsers] = useState([]);
+
+  async function getUsuarios() {
+    try {
+      const { data } = await api.get("cliente");
+      setUsers(data);
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
+  useEffect(() => {
+    getUsuarios();
+  }, []);
 
   const navigate = useNavigate();
   const { parametro } = useParams();
   const { state } = useLocation();
-  console.log(state);
 
   // function entrar(){}
   const entrar = () => {
-    if (login === "" || senha === "") {
-      console.log("Preencha os campos de login e senha");
-    } else if (login === dados.login && senha === dados.senha) {
-      const info = {
-        login: login,
-        senha: senha,
-      };
+    users.map((cliente) => {
+      console.log(cliente);
+      if (login === "" || senha === "") {
+        console.log("Preencha os campos de login e senha");
+      } else if (login === cliente.nome && senha === cliente.senha) {
+        const info = {
+          login: login,
+          senha: senha,
+        };
 
-      console.log(info);
+        console.log(info);
 
-      localStorage.setItem("info", JSON.stringify(info));
+        localStorage.setItem("info", JSON.stringify(info));
 
-      setLogin("");
-      setSenha("");
+        setLogin("");
+        setSenha("");
 
-      navigate("/home/" + login);
-      //navigate(´/${login}´);
-    } else {
-      console.log("Login ou senha inválidos!");
-    }
+        navigate("/home/" + login);
+        //navigate(´/${login}´);
+      } else {
+        console.log("Login ou senha inválidos!");
+      }
+    });
   };
 
   return (
     <>
       <h1>Página de Login</h1>
 
-      <form >
-        <input className="entrada"
+      <form>
+        <input
+          className="entrada"
           type="text"
           placeholder="Digite Seu login"
           value={login}
           onChange={(e) => setLogin(e.target.value)}
         />
         <br />
-        <input className="entrada"
+        <input
+          className="entrada"
           type="password"
           placeholder="Digite Sua Senha"
           value={senha}

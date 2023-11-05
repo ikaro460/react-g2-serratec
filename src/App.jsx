@@ -32,10 +32,10 @@ function App() {
         >
           <ul style={{ listStyleType: "none", padding: 0 }}>
             <li>
-            <Link to="/">Home</Link>
+              <Link to="/">Home</Link>
             </li>
             <li>
-            <Link to="/login">Login</Link>
+              <Link to="/login">Login</Link>
             </li>
             {/* <li>
               <a href="#">Login</a>
@@ -46,7 +46,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/home/:user" element={<Home />} />
-        <Route path="/login" element={<Login />} />
+        <Route path="/login/:cliente" element={<Login />} />
         <Route path="*" element={<h1>Página Não Encontrada</h1>} />
       </Routes>
     </div>
