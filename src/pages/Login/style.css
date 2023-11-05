@@ -1,0 +1,14 @@
+.entrada {
+    align-items: center;
+    width: 30vw;
+    height: 3vw;
+    margin-bottom: 10px;
+  }
+  
+  .botao {
+    width: 15vw;
+    height: 3vw;
+    margin-top: 20px;
+    border-radius: 10px;
+  }
+  

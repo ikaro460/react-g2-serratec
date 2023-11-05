@@ -1,0 +1,65 @@
+.toggle-button {
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    width: 67.5px;
+    height: 33px;
+    cursor: pointer;
+    border-radius: 45px;
+    background-color: #ddd;
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.darkmode .toggle-button{
+    background-color: #333;
+}
+
+.sun-mode{
+    position: absolute;
+    z-index: 1;
+    top: 7px;
+    left: 5px;
+    width: 18px;
+    height: 18px;
+    border-radius: 18px;
+    background: #fff;
+    transform: translateY(30px) rotate(10deg) scale(1);
+    transition: transform 0.5s;
+}
+
+.darkmode .sun-mode {
+    transform: translateY(0) rotate(-50deg) scalet(1);
+}
+
+.moon-mode {
+    position: absolute;
+    z-index: 1;
+    top: 7px;
+    right: 7px;
+    width: 18px;
+    height: 18px;
+    border-radius: 18px;
+    box-shadow: inset -5px -1px 0 0.5px #333;
+}
+
+.darkmode .moon-mode {
+    transform: translateY(-37.5px);
+    transition: transform 0.4s;
+}
+
+.thumb-switch{
+    position: relative;
+    z-index: 2;
+    display: block;
+    width: 27px;
+    height: 27px;
+    left: 2px;
+    border-radius: 27px;
+    background-color: #1f1f1f;
+    transition: transform 0.5s, background-color 0.5s;
+}
+
+.darkmode .thumb-switch {
+    transform: translateX(37.5px);
+}
