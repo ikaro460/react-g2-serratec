@@ -1,14 +1,132 @@
-.entrada {
-    align-items: center;
-    width: 30vw;
-    height: 3vw;
-    margin-bottom: 10px;
+@import "../../styles/global.css";
+
+.lgn-ctn {
+  display: flex;
+  flex-direction: column;
+}
+
+.lgn-ctn .lgn-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* IMAGEM */
+
+.lgn-ctn .img-ctn {
+  width: 350px;
+  height: 430px;
+  overflow: hidden;
+}
+
+.lgn-ctn .img-ctn img {
+  object-fit: contain;
+  width: 100%;
+}
+
+/* FORM */
+
+.lgn-ctn .formulario {
+  width: 311px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 32px;
+}
+
+/* FORM-TITLE */
+.lgn-ctn .formulario .title {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 94px;
+  margin: 32px 0;
+}
+
+.lgn-ctn .formulario .title h2 {
+  font-family: Poppins;
+  font-size: 40px;
+  font-weight: 500;
+  line-height: 44px;
+  letter-spacing: -0.4px;
+}
+
+.lgn-ctn .formulario .title p {
+  font-family: Inter;
+  color: var(--neutral-1);
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 26px;
+}
+
+.lgn-ctn .formulario .title p span {
+  color: var(--color-green);
+  cursor: pointer;
+  transition: 0.25s;
+}
+
+.lgn-ctn .formulario .title p span:hover {
+  color: var(--color-orange);
+}
+
+/* INPUTS */
+.lgn-ctn .formulario .inputs {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.lgn-ctn .formulario .inputs .entrada {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: flex-start;
+}
+
+.lgn-ctn .formulario .inputs .entrada input {
+  color: var(--primary-black);
+  margin: 15px 0;
+  padding: 5px;
+  width: 100%;
+  height: 40px;
+  margin: 0;
+  margin-bottom: 32px;
+  background-color: var(--primary-white);
+  border: none;
+  border-bottom: 1px solid #e8ecef;
+}
+
+/* BOTAO */
+.lgn-ctn .botao {
+  display: flex;
+  width: 311px;
+  height: 48px;
+  padding: 10px 40px;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  border-radius: 8px;
+  background-color: var(--neutral-4);
+}
+
+.lgn-ctn .botao:hover {
+  border: 1px solid black;
+}
+
+@media (min-width: 992px) {
+  .lgn-ctn {
+    height: 100vh;
   }
-  
-  .botao {
-    width: 15vw;
-    height: 3vw;
-    margin-top: 20px;
-    border-radius: 10px;
+
+  .lgn-ctn .lgn-section {
+    flex-direction: row;
+    justify-content: space-around;
   }
-  
+
+  .lgn-ctn .img-ctn {
+    width: 430px;
+    height: 500px;
+  }
+}

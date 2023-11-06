@@ -3,6 +3,8 @@ import { useState } from "react";
 import { useNavigate, useParams, useLocation } from "react-router-dom";
 import "./style.css";
 import { api } from "../../services/api";
+import NavBarBs from "../../components/NavBarBs";
+import saxofone from "../../assets/saxophone-white-background.jpg";
 
 export default function Cadastro() {
   const [formData, setFormData] = useState({
@@ -35,39 +37,58 @@ export default function Cadastro() {
   };
 
   return (
-    <>
-      <h1>Página de Login</h1>
+    <div className="lgn-ctn">
+      <NavBarBs />
+      <section className="lgn-section">
+        <div className="img-ctn">
+          <img src={saxofone} />
+        </div>
 
-      <form>
-        <input
-          className="entrada"
-          type="text"
-          placeholder="Digite Seu Nome Completo"
-          value={formData.nome}
-          onChange={(e) => setFormData({ ...formData, nome: e.target.value })}
-        />
-        <br />
-
-        <input
-          className="entrada"
-          type="text"
-          placeholder="Digite Seu Email"
-          value={formData.email}
-          onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-        />
-        <br />
-        <input
-          className="entrada"
-          type="password"
-          placeholder="Digite Sua Senha"
-          value={formData.senha}
-          onChange={(e) => setFormData({ ...formData, senha: e.target.value })}
-        />
-        <br />
-        <button className="botao" type="button" onClick={cadastrar}>
-          Entrar
-        </button>
-      </form>
-    </>
+        <form className="formulario">
+          <div className="title">
+            <h2>Cadastro</h2>
+            <p>
+              Já tem uma conta?{" "}
+              <span onClick={() => navigate("/")}>Entre agora!</span>
+            </p>
+          </div>
+          <div className="inputs">
+            <div className="entrada">
+              <input
+                type="text"
+                placeholder="Seu nome completo"
+                value={formData.nome}
+                onChange={(e) =>
+                  setFormData({ ...formData, nome: e.target.value })
+                }
+              />
+            </div>
+            <div className="entrada">
+              <input
+                type="text"
+                placeholder="Seu email de acesso"
+                value={formData.email}
+                onChange={(e) =>
+                  setFormData({ ...formData, email: e.target.value })
+                }
+              />
+            </div>
+            <div className="entrada">
+              <input
+                type="password"
+                placeholder="Senha"
+                value={formData.senha}
+                onChange={(e) =>
+                  setFormData({ ...formData, senha: e.target.value })
+                }
+              />
+            </div>
+          </div>
+          <button className="botao" type="button" onClick={cadastrar}>
+            Cadastrar
+          </button>
+        </form>
+      </section>
+    </div>
   );
 }
