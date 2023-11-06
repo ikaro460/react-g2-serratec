@@ -1,69 +1,104 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import { useState } from "react";
 import { useNavigate, useParams, useLocation } from "react-router-dom";
 import "./style.css";
-
-const dados = {
-  login: "Cintia",
-  senha: "123",
-};
+import { api } from "../../services/api";
+import NavBarBs from "../../components/NavBarBs";
+import saxofone from "../../assets/saxophone-white-background.jpg";
+import { AuthContext } from "../../context/AuthContext";
 
 export default function Login() {
   const [login, setLogin] = useState("");
   const [senha, setSenha] = useState("");
+  const [users, setUsers] = useState([]);
+  const { logar, deslogar } = useContext(AuthContext);
+
+  async function getUsuarios() {
+    try {
+      const { data } = await api.get("cliente");
+      setUsers(data);
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
+  useEffect(() => {
+    getUsuarios();
+  }, []);
 
   const navigate = useNavigate();
   const { parametro } = useParams();
   const { state } = useLocation();
-  console.log(state);
 
   // function entrar(){}
   const entrar = () => {
-    if (login === "" || senha === "") {
-      console.log("Preencha os campos de login e senha");
-    } else if (login === dados.login && senha === dados.senha) {
-      const info = {
-        login: login,
-        senha: senha,
-      };
+    const matchingClientes = users.filter((cliente) => {
+      if (login === cliente.email && senha === cliente.senha) {
+        const info = {
+          login: login,
+          nome: cliente.nome,
+          senha: senha,
+        };
 
-      console.log(info);
+        logar(info);
+        localStorage.setItem("info", JSON.stringify(info));
 
-      localStorage.setItem("info", JSON.stringify(info));
+        setLogin("");
+        setSenha("");
 
-      setLogin("");
-      setSenha("");
+        navigate("/home/" + cliente.nome);
+        return true; // Cliente válido
+      } else {
+        return false; // Cliente inválido
+      }
+    });
 
-      navigate("/home/" + login);
-      //navigate(´/${login}´);
-    } else {
+    if (matchingClientes.length === 0) {
       console.log("Login ou senha inválidos!");
+    } else if (login === "" || senha === "") {
+      console.log("Preencha os campos de login e senha");
     }
   };
 
   return (
-    <>
-      <h1>Página de Login</h1>
+    <div className="lgn-ctn">
+      <NavBarBs />
+      <section className="lgn-section">
+        <div className="img-ctn">
+          <img src={saxofone} />
+        </div>
 
-      <form >
-        <input className="entrada"
-          type="text"
-          placeholder="Digite Seu login"
-          value={login}
-          onChange={(e) => setLogin(e.target.value)}
-        />
-        <br />
-        <input className="entrada"
-          type="password"
-          placeholder="Digite Sua Senha"
-          value={senha}
-          onChange={(e) => setSenha(e.target.value)}
-        />
-        <br />
-        <button className="botao" type="button" onClick={entrar}>
-          Entrar
-        </button>
-      </form>
-    </>
+        <form className="formulario">
+          <div className="title">
+            <h2>Login</h2>
+            <p>
+              Não tem conta ainda?{" "}
+              <span onClick={() => navigate("/cadastro")}>Cadastre-se</span>
+            </p>
+          </div>
+          <div className="inputs">
+            <div className="entrada">
+              <input
+                type="text"
+                placeholder="Seu email de acesso"
+                value={login}
+                onChange={(e) => setLogin(e.target.value)}
+              />
+            </div>
+            <div className="entrada">
+              <input
+                type="password"
+                placeholder="Senha"
+                value={senha}
+                onChange={(e) => setSenha(e.target.value)}
+              />
+            </div>
+          </div>
+          <button className="botao" type="button" onClick={entrar}>
+            Entrar
+          </button>
+        </form>
+      </section>
+    </div>
   );
 }

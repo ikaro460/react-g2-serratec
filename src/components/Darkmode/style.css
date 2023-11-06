@@ -29,7 +29,7 @@
 }
 
 .darkmode .sun-mode {
-    transform: translateY(0) rotate(-50deg) scalet(1);
+    transform: translateY(0) rotate(-50deg) scale(1);
 }
 
 .moon-mode {
