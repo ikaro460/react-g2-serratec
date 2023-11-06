@@ -4,12 +4,8 @@ import { Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import { useRef, useState } from "react";
-import { Link } from "react-router-dom";
 import Cadastro from "./pages/Cadastro";
 import LandingPage from "./pages/LandingPage";
-import Radio1 from "./components/Radio";
-import { Swiper, SwiperSlide } from "swiper/react";
-import Carrossel from "./components/Carrossel";
 
 function App() {
   const dropDownRef = useRef(null);
@@ -19,8 +15,7 @@ function App() {
   console.log(isActive);
 
   return (
-    <div className="container">
-      
+    <div>
       {/* <div className="menu-container">
         <button onClick={onClick} className="menu-button">
           <span className="tb">Menu</span>
@@ -51,13 +46,13 @@ function App() {
         </nav>
       </div> */}
       <Routes>
-        <Route path="/" element={<LandingPage />} />
+        <Route path="/" element={<Login />} />
+        <Route path="/lp" element={<LandingPage />} />
         <Route path="/home/:user" element={<Home />} />
         <Route path="/login/" element={<Login />} />
         <Route path="/cadastro/" element={<Cadastro />} />
         <Route path="*" element={<h1>Página Não Encontrada</h1>} />
       </Routes>
-    <Radio1/>
     </div>
   );
 }
