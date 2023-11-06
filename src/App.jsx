@@ -6,6 +6,7 @@ import Login from "./pages/Login";
 import { useRef, useState } from "react";
 import Cadastro from "./pages/Cadastro";
 import LandingPage from "./pages/LandingPage";
+import { Rotas } from "./routes/Rotas";
 
 function App() {
   const dropDownRef = useRef(null);
@@ -45,14 +46,15 @@ function App() {
           </ul>
         </nav>
       </div> */}
-      <Routes>
+      {/* <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/lp" element={<LandingPage />} />
         <Route path="/home/:user" element={<Home />} />
         <Route path="/login/" element={<Login />} />
         <Route path="/cadastro/" element={<Cadastro />} />
         <Route path="*" element={<h1>Página Não Encontrada</h1>} />
-      </Routes>
+      </Routes> */}
+      <Rotas />
     </div>
   );
 }

@@ -1,15 +1,17 @@
-import React, { useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import { useState } from "react";
 import { useNavigate, useParams, useLocation } from "react-router-dom";
 import "./style.css";
 import { api } from "../../services/api";
 import NavBarBs from "../../components/NavBarBs";
 import saxofone from "../../assets/saxophone-white-background.jpg";
+import { AuthContext } from "../../context/AuthContext";
 
 export default function Login() {
   const [login, setLogin] = useState("");
   const [senha, setSenha] = useState("");
   const [users, setUsers] = useState([]);
+  const { logar, deslogar } = useContext(AuthContext);
 
   async function getUsuarios() {
     try {
@@ -38,6 +40,7 @@ export default function Login() {
           senha: senha,
         };
 
+        logar(info);
         localStorage.setItem("info", JSON.stringify(info));
 
         setLogin("");

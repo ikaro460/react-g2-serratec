@@ -1,31 +1,15 @@
-import { useEffect } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useContext } from "react";
 import Radio1 from "../../components/Radio";
+import { AuthContext } from "../../context/AuthContext";
 
 export default function Home() {
-  const navigate = useNavigate();
-  const { user } = useParams();
-  const usuarioValido = JSON.parse(localStorage.getItem("info"));
-
-  const autenticar = () => {
-    usuarioValido.nome.toUpperCase().replace(/\s+/g, "") !=
-      user.toUpperCase().replace(/\s+/g, "") || usuarioValido == null
-      ? navigate("/")
-      : null;
-  };
-
-  useEffect(() => {
-    autenticar();
-  }, []);
+  const { user, deslogar } = useContext(AuthContext);
 
   return (
     <>
       <h1>Home</h1>
-      {user == undefined ? (
-        <h2>Olá visitante!</h2>
-      ) : (
-        <h2>Seja bem vindo(a), {user}!</h2>
-      )}
+      <h2>Seja bem vindo(a), {user.nome}!</h2>
+      <button onClick={() => deslogar()}>Sair</button>
       <Radio1 />
     </>
   );
