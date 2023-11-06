@@ -21,7 +21,8 @@ export default function Home() {
         <h2>Olá visitante!</h2>
       ) : (
         <h2>Seja bem vindo(a), {user}!</h2>
-      )}
+        )}
+       
     </>
   );
 }

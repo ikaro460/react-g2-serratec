@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useNavigate, useParams, useLocation } from "react-router-dom";
 import "./style.css";
 import { api } from "../../services/api";
+import Radio1 from "../../components/Radio";
 
 export default function Login() {
   const [login, setLogin] = useState("");
