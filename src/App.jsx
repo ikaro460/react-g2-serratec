@@ -7,6 +7,9 @@ import { useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import Cadastro from "./pages/Cadastro";
 import LandingPage from "./pages/LandingPage";
+import Radio1 from "./components/Radio";
+import { Swiper, SwiperSlide } from "swiper/react";
+import Carrossel from "./components/Carrossel";
 
 function App() {
   const dropDownRef = useRef(null);
@@ -17,6 +20,7 @@ function App() {
 
   return (
     <div className="container">
+      
       {/* <div className="menu-container">
         <button onClick={onClick} className="menu-button">
           <span className="tb">Menu</span>
@@ -53,6 +57,7 @@ function App() {
         <Route path="/cadastro/" element={<Cadastro />} />
         <Route path="*" element={<h1>Página Não Encontrada</h1>} />
       </Routes>
+    <Radio1/>
     </div>
   );
 }
