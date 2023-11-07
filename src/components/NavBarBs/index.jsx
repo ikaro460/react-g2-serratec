@@ -21,10 +21,10 @@ export default function NavBarBs() {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto nav-items">
-            <Nav.Link href="/">Home</Nav.Link>
+            <Link to="/">Home</Link>
             <button onClick={() => deslogar()}>Sair</button>
 
-            <Nav.Link href="/cadastroproduto">Cadastrar Produto</Nav.Link>
+            <Link to="/cadastroproduto">Cadastrar Produto</Link>
           </Nav>
           <DarkMode />
         </Navbar.Collapse>

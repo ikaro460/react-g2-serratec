@@ -19,6 +19,7 @@
 }
 
 .nav-ctn .nav-items > * {
+  text-decoration: none;
   color: var(--primary-black) !important;
   border-radius: 5px;
   border: 1px solid transparent;

@@ -2,15 +2,15 @@ import "./style.css";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { useState, useEffect } from "react";
 
-import { register } from "swiper/element/bundle"
+import { register } from "swiper/element/bundle";
 
 register();
-import "swiper/css"
-import "swiper/css/navigation"
-import "swiper/css/pagination"
-import "swiper/css/scrollbar"
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import "swiper/css/scrollbar";
 
-function Carrossel() {
+export function Carrossel() {
   const [slidePerView, setSlidePerview] = useState(2);
   const data = [
     {
@@ -25,7 +25,8 @@ function Carrossel() {
     },
     {
       id: "3",
-      image: "https://cangurunews.com.br/wp-content/uploads/2021/02/instrumentos-musicais-696x459.jpg",
+      image:
+        "https://cangurunews.com.br/wp-content/uploads/2021/02/instrumentos-musicais-696x459.jpg",
     },
     {
       id: "4",
@@ -54,8 +55,6 @@ function Carrossel() {
 
   return (
     <div>
-      
-
       <Swiper slidePerView={1} pagination={{ clickable: true }} navigation>
         {data.map((item) => (
           <SwiperSlide key={item.id}>
