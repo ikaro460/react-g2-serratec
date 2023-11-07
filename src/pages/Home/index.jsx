@@ -3,9 +3,11 @@ import Radio1 from "../../components/Radio";
 import { AuthContext } from "../../context/AuthContext";
 import ProductCard from "../../components/ProductCard";
 import "./style.css";
+import { useNavigate } from "react-router-dom";
 
 export default function Home() {
   const { cliente, deslogar, getProdutos, produtos } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   useEffect(() => {
     getProdutos();
@@ -17,12 +19,15 @@ export default function Home() {
       <h1>Home</h1>
       <h2>Seja bem vindo(a), {cliente.nome}!</h2>
       <button onClick={() => deslogar()}>Sair</button>
+      <button onClick={() => navigate("/cadastroproduto")}>
+        Cadastrar produto
+      </button>
       <ul className="prod-list">
         {!!produtos &&
           produtos.map((item, index) => {
             return (
               <li key={index}>
-                <ProductCard />
+                <ProductCard produto={item} />
               </li>
             );
           })}
