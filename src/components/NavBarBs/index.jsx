@@ -25,8 +25,8 @@ export default function NavBarBs() {
             <button onClick={() => deslogar()}>Sair</button>
 
             <Link to="/cadastroproduto">Cadastrar Produto</Link>
+            <DarkMode />
           </Nav>
-          <DarkMode />
         </Navbar.Collapse>
       </Container>
     </Navbar>

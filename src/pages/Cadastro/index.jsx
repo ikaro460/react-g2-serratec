@@ -4,7 +4,7 @@ import { useNavigate, useParams, useLocation } from "react-router-dom";
 import "./style.css";
 import { api } from "../../services/api";
 import NavBarBs from "../../components/NavBarBs";
-import saxofone from "../../assets/saxophone-white-background.jpg";
+import saxofone from "../../assets/saxophone.png";
 
 export default function Cadastro() {
   const [formData, setFormData] = useState({
@@ -36,9 +36,9 @@ export default function Cadastro() {
   };
 
   return (
-    <div className="lgn-ctn">
+    <div className="cadastro-ctn">
       <NavBarBs />
-      <section className="lgn-section">
+      <section className="cadastro-section">
         <div className="img-ctn">
           <img src={saxofone} />
         </div>

@@ -4,7 +4,7 @@ import { useNavigate, useParams, useLocation } from "react-router-dom";
 import "./style.css";
 import { api } from "../../services/api";
 import NavBarBs from "../../components/NavBarBs";
-import saxofone from "../../assets/saxophone-white-background.jpg";
+import saxofone from "../../assets/saxophone.png";
 import { AuthContext } from "../../context/AuthContext";
 
 export default function Login() {
