@@ -1,0 +1,33 @@
+@import "../../styles/global.css";
+
+.produto-imagem {
+  text-align: center;
+  width: 262px;
+  height: 349px;
+  overflow: hidden;
+}
+
+.produto-imagem img {
+  width: 100%;
+  object-fit: contain;
+}
+
+.produto-preco h3 {
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 26px;
+}
+
+.produto-preco p {
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 22px;
+}
+
+.produto-card {
+  margin: 12px;
+}

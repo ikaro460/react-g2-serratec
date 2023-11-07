@@ -5,11 +5,13 @@ import LandingPage from "../pages/LandingPage";
 import Cadastro from "../pages/Cadastro";
 import { useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
+import CadastroProduto from "../pages/CadastroProduto";
 
 export const RotasPrivadas = () => {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
+      <Route path="/cadastroproduto" element={<CadastroProduto />} />
       <Route path="*" element={<Navigate to="/" />} />
     </Routes>
   );
