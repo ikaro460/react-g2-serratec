@@ -4,6 +4,8 @@ import { AuthContext } from "../../context/AuthContext";
 import ProductCard from "../../components/ProductCard";
 import "./style.css";
 import { useNavigate } from "react-router-dom";
+import DarkMode from "../../components/Darkmode";
+
 
 export default function Home() {
   const { cliente, deslogar, getProdutos, produtos } = useContext(AuthContext);
@@ -33,6 +35,7 @@ export default function Home() {
           })}
       </ul>
       <Radio1 />
+    
     </div>
   );
 }

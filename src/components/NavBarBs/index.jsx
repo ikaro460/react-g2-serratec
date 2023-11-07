@@ -4,6 +4,8 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import logo from "../../assets/logoLoja.png";
+import DarkMode from "../Darkmode";
+
 
 export default function NavBarBs() {
   return (
@@ -30,6 +32,7 @@ export default function NavBarBs() {
             </NavDropdown>
           </Nav>
         </Navbar.Collapse>
+        <DarkMode/>
       </Container>
     </Navbar>
   );
