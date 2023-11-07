@@ -5,18 +5,19 @@ import ProductCard from "../../components/ProductCard";
 import "./style.css";
 import { useNavigate } from "react-router-dom";
 import NavBarBs from "../../components/NavBarBs";
+import Carrossel from "../../components/Carrossel";
 
 export default function Home() {
   const { getProdutos, produtos } = useContext(AuthContext);
 
   useEffect(() => {
     getProdutos();
-    console.log(produtos);
   }, []);
 
   return (
     <div className="home-pg">
       <NavBarBs />
+     <Carrossel/>
       <ul className="prod-list">
         {!!produtos &&
           produtos.map((item, index) => {
@@ -27,7 +28,6 @@ export default function Home() {
             );
           })}
       </ul>
-      <Radio1 />
     </div>
   );
 }

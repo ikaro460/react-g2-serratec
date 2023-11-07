@@ -6,12 +6,14 @@ import Cadastro from "../pages/Cadastro";
 import { useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
 import CadastroProduto from "../pages/CadastroProduto";
+import EditarProduto from "../pages/EditarProduto";
 
 export const RotasPrivadas = () => {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/cadastroproduto" element={<CadastroProduto />} />
+      <Route path="/editarproduto/:id" element={<EditarProduto />} />
       <Route path="*" element={<Navigate to="/" />} />
     </Routes>
   );

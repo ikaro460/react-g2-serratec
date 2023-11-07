@@ -31,3 +31,16 @@
 .produto-card {
   margin: 12px;
 }
+
+/* BOTAO */
+.lgn-ctn .botao {
+  display: flex;
+  width: 311px;
+  height: 48px;
+  padding: 10px 40px;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  border-radius: 8px;
+  background: var(--neutral-4);
+}

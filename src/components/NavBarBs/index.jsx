@@ -15,18 +15,18 @@ export default function NavBarBs() {
   return (
     <Navbar expand="lg" className="bg-body-tertiary nav-ctn">
       <Container>
-        <Navbar.Brand href="#home" className="nav-img-ctn">
+        <Navbar.Brand href="/" className="nav-img-ctn">
           <img src={logo} alt="logo" style={{ width: "60px" }} />
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto nav-items">
-            <Nav.Link href="/">Home</Nav.Link>
+            <Link to="/">Home</Link>
             <button onClick={() => deslogar()}>Sair</button>
 
-            <Nav.Link href="/cadastroproduto">Cadastrar Produto</Nav.Link>
+            <Link to="/cadastroproduto">Cadastrar Produto</Link>
+            <DarkMode />
           </Nav>
-          <DarkMode />
         </Navbar.Collapse>
       </Container>
     </Navbar>

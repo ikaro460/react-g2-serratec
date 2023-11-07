@@ -4,13 +4,13 @@ import { useNavigate, useParams, useLocation } from "react-router-dom";
 import "./style.css";
 import { api } from "../../services/api";
 import NavBarBs from "../../components/NavBarBs";
-import saxofone from "../../assets/saxophone-white-background.jpg";
+import saxofone from "../../assets/saxophone-white-background.png";
 
 export default function CadastroProduto() {
   const [formData, setFormData] = useState({
     nome: "",
     descricao: "",
-    valorUnitario: "",
+    valor_unitario: "",
     imagem: "",
   });
   const navigate = useNavigate();
@@ -26,7 +26,6 @@ export default function CadastroProduto() {
       reader.onload = () => {
         const imageData = reader.result;
         setFormData({ ...formData, imagem: imageData });
-        console.log(imageData);
       };
       reader.readAsDataURL(file);
     }
@@ -36,13 +35,12 @@ export default function CadastroProduto() {
     if (
       formData.nome === "" ||
       formData.descricao === "" ||
-      formData.valorUnitario === ""
+      formData.valor_unitario === ""
     ) {
       console.log("Preencha todos os campos.");
     } else {
       try {
         const data = await api.post("produto", formData);
-        console.log(data);
         console.log("Produto cadastrado com sucesso!");
         navigate("/");
       } catch (err) {
@@ -52,9 +50,9 @@ export default function CadastroProduto() {
   };
 
   return (
-    <div className="lgn-ctn">
+    <div className="cad-prod-ctn">
       <NavBarBs />
-      <section className="lgn-section">
+      <section className="cad-prod-section">
         <div className="img-ctn">
           <img src={saxofone} />
         </div>
@@ -88,9 +86,9 @@ export default function CadastroProduto() {
               <input
                 type="text"
                 placeholder="Preço(R$)"
-                value={formData.valorUnitario}
+                value={formData.valor_unitario}
                 onChange={(e) =>
-                  setFormData({ ...formData, valorUnitario: e.target.value })
+                  setFormData({ ...formData, valor_unitario: e.target.value })
                 }
               />
             </div>
