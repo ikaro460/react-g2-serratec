@@ -29,7 +29,7 @@ export default function DarkMode() {
   };
 
   const toggleTheme = () => {
-    if (!!isDarkMode) {
+    if (!isDarkMode) {
       setDarkMode();
       setIsDarkMode(!isDarkMode);
     } else {
@@ -39,7 +39,7 @@ export default function DarkMode() {
   };
 
   return (
-    <div className={isDarkMode ? "darkmode" : "lightmode"}>
+    <div className={!isDarkMode ? "darkmode" : "lightmode"}>
       <button className="toggle-button" onClick={toggleTheme}>
         <span className="sun-mode"></span>
         <span className="moon-mode"></span>
