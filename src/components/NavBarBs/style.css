@@ -17,26 +17,18 @@
   background-color: #fff !important;
 }
 
-.nav-link {
-  color: var(--primary-black) !important;
-  transition: 0.2s;
-}
-
 .nav-ctn .nav-items > * {
+  color: var(--primary-black) !important;
   border-radius: 5px;
   border: 1px solid transparent;
-  transition: 0.4s;
+  transition: 0.2s;
   margin: 0 10px;
+  padding: 5px 15px;
+  background-color: var(--primary-white);
 }
 
 .nav-ctn .nav-items > *:hover {
   border: 1px solid var(--primary-black);
-}
-
-.nav-ctn .nav-items button {
-  transition: 0.2s;
-  color: var(--primary-black);
-  background-color: var(--primary-white);
 }
 
 @media (min-width: 991px) {
