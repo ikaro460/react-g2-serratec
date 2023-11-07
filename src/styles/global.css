@@ -4,10 +4,6 @@
 :root {
   font-family: Inter, sans-serif;
 
-  /* GERAIS */
-  --primary-black: #000000;
-  --primary-white: #fefefe;
-
   /* NEUTRAS */
   --neutral-1: #6c7275;
   --neutral-2: #343839;
@@ -19,4 +15,19 @@
   --color-green: #38cb89;
   --color-orange: #ffab00;
   --color-blue: #377dff;
+}
+
+[data-theme="light"] {
+  --primary-white: #fefefe;
+  --primary-black: #000000;
+}
+
+[data-theme="dark"] {
+  --primary-white: #000000;
+  --primary-black: #fefefe;
+}
+
+body {
+  background-color: var(--primary-white);
+  transition: 0.2s;
 }

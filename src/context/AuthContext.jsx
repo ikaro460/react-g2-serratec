@@ -17,6 +17,7 @@ export const AuthProvider = ({ children }) => {
 
   const deslogar = () => {
     setCliente(null);
+    localStorage.removeItem("info");
   };
 
   const getProdutos = async () => {
