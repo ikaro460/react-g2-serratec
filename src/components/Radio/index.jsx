@@ -5,7 +5,6 @@ const Radio1 = () => {
     <div>
       <audio
         controls
-        autoPlay
         src="https://27393.live.streamtheworld.com/RADIO_89FM_SC"
       ></audio>
     </div>
