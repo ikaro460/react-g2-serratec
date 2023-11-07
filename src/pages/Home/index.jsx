@@ -4,12 +4,10 @@ import { AuthContext } from "../../context/AuthContext";
 import ProductCard from "../../components/ProductCard";
 import "./style.css";
 import { useNavigate } from "react-router-dom";
-import DarkMode from "../../components/Darkmode";
-
+import NavBarBs from "../../components/NavBarBs";
 
 export default function Home() {
-  const { cliente, deslogar, getProdutos, produtos } = useContext(AuthContext);
-  const navigate = useNavigate();
+  const { getProdutos, produtos } = useContext(AuthContext);
 
   useEffect(() => {
     getProdutos();
@@ -18,12 +16,7 @@ export default function Home() {
 
   return (
     <div className="home-pg">
-      <h1>Home</h1>
-      <h2>Seja bem vindo(a), {cliente.nome}!</h2>
-      <button onClick={() => deslogar()}>Sair</button>
-      <button onClick={() => navigate("/cadastroproduto")}>
-        Cadastrar produto
-      </button>
+      <NavBarBs />
       <ul className="prod-list">
         {!!produtos &&
           produtos.map((item, index) => {
@@ -35,7 +28,6 @@ export default function Home() {
           })}
       </ul>
       <Radio1 />
-    
     </div>
   );
 }

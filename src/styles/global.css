@@ -4,7 +4,6 @@
 :root {
   font-family: Inter, sans-serif;
 
-  
   /* NEUTRAS */
   --neutral-1: #6c7275;
   --neutral-2: #343839;
@@ -28,6 +27,7 @@
   --primary-black: #fefefe;
 }
 
-body{
+body {
   background-color: var(--primary-white);
+  transition: 0.2s;
 }
