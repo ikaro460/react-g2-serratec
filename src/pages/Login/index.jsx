@@ -33,6 +33,7 @@ export default function Login() {
 
   // function entrar(){}
   const entrar = () => {
+    getUsuarios();
     const matchingClientes = users.filter((cliente) => {
       if (login === cliente.email && senha === cliente.senha) {
         const info = {
@@ -51,16 +52,17 @@ export default function Login() {
       }
     });
 
-    if (login === "" || senha === "") {
-      setMensagemErro("Preencha os campos de login e senha");
-    } else if (matchingClientes.length === 0) {
+    if (login.length > 0 || senha.length > 0) {
+      console.log(login, senha, users);
       setMensagemErro("Login ou senha inválidos!");
+    } else if (matchingClientes.length === 0) {
+      setMensagemErro("Preencha os campos de login e senha");
     }
   };
 
   return (
     <div className="lgn-ctn">
-      <NavBarBs />
+      <NavBarBs publicRoute={true} />
       <section className="lgn-section">
         <div className="img-ctn">
           <img src={saxofone} />

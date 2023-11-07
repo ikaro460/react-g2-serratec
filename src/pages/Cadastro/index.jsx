@@ -45,7 +45,7 @@ export default function Cadastro() {
 
   return (
     <div className="cadastro-ctn">
-      <NavBarBs />
+      <NavBarBs public={true} />
       <section className="cadastro-section">
         <div className="img-ctn">
           <img src={saxofone} alt="Imagem do Saxofone" />
