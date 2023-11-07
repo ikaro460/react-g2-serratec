@@ -1,0 +1,9 @@
+@import "../../styles/global.css";
+
+audio::-webkit-media-controls-panel {
+  background: var(--neutral-4);
+}
+
+audio::-webkit-media-controls-enclosure {
+  border-radius: 0;
+}

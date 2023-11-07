@@ -26,7 +26,6 @@ export default function Home() {
             );
           })}
       </ul>
-      <Radio1 />
     </div>
   );
 }
