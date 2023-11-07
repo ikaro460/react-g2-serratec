@@ -41,11 +41,8 @@ export default function Login() {
         };
 
         logar(info);
-        localStorage.setItem("info", JSON.stringify(info));
-
         setLogin("");
         setSenha("");
-
         navigate("/home/" + cliente.nome);
         return true; // Cliente válido
       } else {

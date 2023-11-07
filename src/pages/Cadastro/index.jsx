@@ -27,7 +27,6 @@ export default function Cadastro() {
     } else {
       try {
         const data = await api.post("cliente", formData);
-        console.log(data);
         console.log("Login efetuado com sucesso!");
         navigate("/login");
       } catch (err) {

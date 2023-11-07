@@ -11,8 +11,8 @@ export const AuthProvider = ({ children }) => {
   const [produtos, setProdutos] = useState(produtosInfo ? produtosInfo : null);
 
   const logar = (loginData) => {
-    console.log(loginData);
     setCliente(loginData);
+    localStorage.setItem("info", JSON.stringify(loginData));
   };
 
   const deslogar = () => {

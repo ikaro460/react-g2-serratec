@@ -1,17 +1,22 @@
-import React, { useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import { useState } from "react";
 import { useNavigate, useParams, useLocation } from "react-router-dom";
 import "./style.css";
 import { api } from "../../services/api";
 import NavBarBs from "../../components/NavBarBs";
 import saxofone from "../../assets/saxophone-white-background.jpg";
+import { AuthContext } from "../../context/AuthContext";
 
-export default function CadastroProduto() {
+export default function EditarProduto() {
+  const { id } = useParams();
+  const { produtos } = useContext(AuthContext);
+  const produto = produtos.find((item) => item.id_produto === id);
+
   const [formData, setFormData] = useState({
-    nome: "",
-    descricao: "",
-    valor_unitario: "",
-    imagem: "",
+    nome: produto.nome,
+    descricao: produto.descricao,
+    valor_unitario: produto.valor_unitario,
+    imagem: produto.imagem,
   });
   const navigate = useNavigate();
   const { parametro } = useParams();
@@ -31,7 +36,7 @@ export default function CadastroProduto() {
     }
   };
 
-  const cadastrar = async () => {
+  const editar = async () => {
     if (
       formData.nome === "" ||
       formData.descricao === "" ||
@@ -40,7 +45,7 @@ export default function CadastroProduto() {
       console.log("Preencha todos os campos.");
     } else {
       try {
-        const data = await api.post("produto", formData);
+        const data = await api.put(`produto/${id}`, formData);
         console.log("Produto cadastrado com sucesso!");
         navigate("/");
       } catch (err) {
@@ -59,7 +64,7 @@ export default function CadastroProduto() {
 
         <form className="formulario">
           <div className="title">
-            <h2>Cadastro de produtos</h2>
+            <h2>Editar produtos</h2>
           </div>
           <div className="inputs">
             <div className="entrada">
@@ -84,6 +89,7 @@ export default function CadastroProduto() {
             </div>
             <div className="entrada">
               <input
+                id="img-input"
                 type="text"
                 placeholder="Preço(R$)"
                 value={formData.valor_unitario}
@@ -101,8 +107,8 @@ export default function CadastroProduto() {
               />
             </div>
           </div>
-          <button className="botao" type="button" onClick={cadastrar}>
-            Cadastrar
+          <button className="botao" type="button" onClick={editar}>
+            Enviar
           </button>
         </form>
       </section>
