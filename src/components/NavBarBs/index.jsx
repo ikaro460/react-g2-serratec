@@ -15,7 +15,7 @@ export default function NavBarBs() {
   return (
     <Navbar expand="lg" className="bg-body-tertiary nav-ctn">
       <Container>
-        <Navbar.Brand href="#home" className="nav-img-ctn">
+        <Navbar.Brand href="/" className="nav-img-ctn">
           <img src={logo} alt="logo" style={{ width: "60px" }} />
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
