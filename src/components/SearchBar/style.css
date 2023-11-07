@@ -1,0 +1,29 @@
+@import "../../styles/global.css";
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  background-color: var(--primaty-white);
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 8px;
+  transition: width 0.3s;
+  width: 200px;
+}
+
+.search-bar.focused {
+  width: 300px;
+}
+
+.input-group-prepend {
+  width: 1%;
+  white-space: nowrap;
+}
+
+.input-group-text i {
+  color: black;
+}
+
+.search-bar.focused .input-group-text i {
+  transform: scale(1.2);
+}
