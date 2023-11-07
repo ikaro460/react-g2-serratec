@@ -1,5 +1,4 @@
 import React, { useContext } from "react";
-import ProdutoImagem from "../../assets/saxophone-white-background.jpg";
 import "./style.css";
 import { AuthContext } from "../../context/AuthContext";
 import { api } from "../../services/api";

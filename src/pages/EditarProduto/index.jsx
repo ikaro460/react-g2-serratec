@@ -55,9 +55,9 @@ export default function EditarProduto() {
   };
 
   return (
-    <div className="lgn-ctn">
+    <div className="edit-prod-ctn">
       <NavBarBs />
-      <section className="lgn-section">
+      <section className="edit-prod-section">
         <div className="img-ctn">
           <img src={saxofone} />
         </div>

@@ -50,9 +50,9 @@ export default function CadastroProduto() {
   };
 
   return (
-    <div className="lgn-ctn">
+    <div className="cad-prod-ctn">
       <NavBarBs />
-      <section className="lgn-section">
+      <section className="cad-prod-section">
         <div className="img-ctn">
           <img src={saxofone} />
         </div>

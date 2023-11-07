@@ -29,7 +29,7 @@ export default function DarkMode() {
   };
 
   const toggleTheme = () => {
-    if (!isDarkMode) {
+    if (!!isDarkMode) {
       setDarkMode();
       setIsDarkMode(!isDarkMode);
     } else {
