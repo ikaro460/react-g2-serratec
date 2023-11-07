@@ -20,8 +20,9 @@ export default function Cadastro() {
   const { state } = useLocation();
 
   const cadastrar = async () => {
-    if (formData.nome === "" || formData.email === "" || formData.senha === "") {
+    if (formData.nome == "" || formData.email == "" || formData.senha == "") {
       console.log("Preencha todos os campos");
+      setMensagemErro("Preencha todos os campos");
     } else {
       try {
         const existingUser = await api.get(`cliente?email=${formData.email}`);
@@ -31,11 +32,13 @@ export default function Cadastro() {
         } else {
           const data = await api.post("cliente", formData);
           console.log("Cadastro efetuado com sucesso!");
-          navigate("/login");
+          navigate("/");
         }
       } catch (err) {
         console.log(err);
-        setMensagemErro("Ocorreu um erro ao cadastrar. Tente novamente mais tarde.");
+        setMensagemErro(
+          "Ocorreu um erro ao cadastrar. Tente novamente mais tarde."
+        );
       }
     }
   };
@@ -49,11 +52,7 @@ export default function Cadastro() {
         </div>
 
         <form className="formulario">
-          {mensagemErro && (
-            <div className="mensagem-erro">
-              {mensagemErro}
-            </div>
-          )}
+          {mensagemErro && <div className="mensagem-erro">{mensagemErro}</div>}
 
           <div className="title">
             <h2>Cadastro</h2>

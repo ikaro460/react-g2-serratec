@@ -52,3 +52,9 @@ body {
   background-color: var(--primary-white);
   transition: 0.2s;
 }
+
+/* MENSAGEM DE ERRO */
+.mensagem-erro {
+  transition: 0.2s;
+  color: var(--color-red);
+}

@@ -12,6 +12,7 @@ export default function Login() {
   const [senha, setSenha] = useState("");
   const [users, setUsers] = useState([]);
   const { logar, deslogar } = useContext(AuthContext);
+  const [mensagemErro, setMensagemErro] = useState("");
 
   async function getUsuarios() {
     try {
@@ -50,10 +51,10 @@ export default function Login() {
       }
     });
 
-    if (matchingClientes.length === 0) {
-      console.log("Login ou senha inválidos!");
-    } else if (login === "" || senha === "") {
-      console.log("Preencha os campos de login e senha");
+    if (login === "" || senha === "") {
+      setMensagemErro("Preencha os campos de login e senha");
+    } else if (matchingClientes.length === 0) {
+      setMensagemErro("Login ou senha inválidos!");
     }
   };
 
@@ -66,6 +67,7 @@ export default function Login() {
         </div>
 
         <form className="formulario">
+          <div className="mensagem-erro">{mensagemErro}</div>
           <div className="title">
             <h2>Login</h2>
             <p>
