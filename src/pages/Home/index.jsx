@@ -17,7 +17,7 @@ export default function Home() {
   return (
     <div className="home-pg">
       <NavBarBs />
-      <Carrossel />
+     <Carrossel/>
       <ul className="prod-list">
         {!!produtos &&
           produtos.map((item, index) => {
