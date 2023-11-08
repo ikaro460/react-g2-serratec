@@ -17,19 +17,20 @@ export default function NavBarBs({ publicRoute }) {
         <Navbar.Brand href="/" className="nav-img-ctn">
           <img src={logo} alt="logo" style={{ width: "60px" }} />
         </Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        {!publicRoute && (
-          <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="me-auto nav-items">
-              <Link to="/">Home</Link>
-              <button onClick={() => deslogar()}>Sair</button>
-              <Link to="/cadastroproduto">Cadastrar Produto</Link>
-              <DarkMode />
-            </Nav>
-          </Navbar.Collapse>
-        )}
-
         {publicRoute && <DarkMode />}
+        {!publicRoute && (
+          <>
+            <Navbar.Toggle aria-controls="basic-navbar-nav" />
+            <Navbar.Collapse id="basic-navbar-nav">
+              <Nav className="me-auto nav-items">
+                <Link to="/">Home</Link>
+                <button onClick={() => deslogar()}>Sair</button>
+                <Link to="/cadastroproduto">Cadastrar Produto</Link>
+                <DarkMode />
+              </Nav>
+            </Navbar.Collapse>
+          </>
+        )}
       </Container>
     </Navbar>
   );

@@ -9,6 +9,7 @@
   padding: 8px;
   transition: width 0.3s;
   width: 200px;
+  margin: 15px;
 }
 
 .search-bar.focused {

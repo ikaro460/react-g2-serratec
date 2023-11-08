@@ -3,7 +3,7 @@ import { useNavigate, useParams, useLocation } from "react-router-dom";
 import "./style.css";
 import { api } from "../../services/api";
 import NavBarBs from "../../components/NavBarBs";
-import saxofone from "../../assets/saxophone.png";
+import saxofone from "../../assets/instrumentos/lesPaul1.png";
 
 export default function Cadastro() {
   const [formData, setFormData] = useState({
@@ -45,7 +45,7 @@ export default function Cadastro() {
 
   return (
     <div className="cadastro-ctn">
-      <NavBarBs public={true} />
+      <NavBarBs publicRoute={true} />
       <section className="cadastro-section">
         <div className="img-ctn">
           <img src={saxofone} alt="Imagem do Saxofone" />

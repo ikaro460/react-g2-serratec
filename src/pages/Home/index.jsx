@@ -13,6 +13,8 @@ export default function Home() {
   const { getProdutos, produtos } = useContext(AuthContext);
   const [pesquisa, setPesquisa] = useState("");
   const [produtosFiltrados, setProdutosFiltrados] = useState(produtos);
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 9; // Number of items to display per page
 
   useEffect(() => {
     const pesquisaNormalized = unorm
@@ -32,20 +34,46 @@ export default function Home() {
     });
 
     setProdutosFiltrados(filteredProducts);
-  }, [pesquisa]);
+  }, [pesquisa, produtos]);
 
   useEffect(() => {
     getProdutos();
   }, []);
 
+  // Calculate the number of pages based on the number of filtered products
+  const totalPages = Math.ceil(produtosFiltrados.length / itemsPerPage);
+
+  // Calculate the range of products to display on the current page
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  const productsToDisplay = produtosFiltrados.slice(startIndex, endIndex);
+
   return (
     <div className="home-pg">
       <NavBarBs />
       <Carrossel />
+      <h2>Produtos</h2>
       <SearchBar setPesquisa={setPesquisa} />
+      <div className="pagination">
+        <button
+          onClick={() => setCurrentPage(currentPage - 1)}
+          disabled={currentPage === 1}
+        >
+          <i className="bi bi-caret-left-fill"></i>
+        </button>
+        <span>
+          Page {currentPage} of {totalPages}
+        </span>
+        <button
+          onClick={() => setCurrentPage(currentPage + 1)}
+          disabled={currentPage === totalPages}
+        >
+          <i className="bi bi-caret-right-fill"></i>
+        </button>
+      </div>
       <ul className="prod-list">
-        {!!produtosFiltrados &&
-          produtosFiltrados.map((item, index) => {
+        {!!productsToDisplay &&
+          productsToDisplay.map((item, index) => {
             return (
               <li key={index}>
                 <ProductCard produto={item} />
@@ -53,6 +81,23 @@ export default function Home() {
             );
           })}
       </ul>
+      <div className="pagination">
+        <button
+          onClick={() => setCurrentPage(currentPage - 1)}
+          disabled={currentPage === 1}
+        >
+          <i className="bi bi-caret-left-fill"></i>
+        </button>
+        <span>
+          Page {currentPage} of {totalPages}
+        </span>
+        <button
+          onClick={() => setCurrentPage(currentPage + 1)}
+          disabled={currentPage === totalPages}
+        >
+          <i className="bi bi-caret-right-fill"></i>
+        </button>
+      </div>
     </div>
   );
 }

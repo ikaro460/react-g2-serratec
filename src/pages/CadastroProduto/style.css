@@ -27,6 +27,8 @@
 /* FORM */
 
 .cad-prod-ctn .formulario {
+  transition: 0.2s;
+  color: var(--primary-black);
   width: 311px;
   display: flex;
   flex-direction: column;
@@ -42,6 +44,7 @@
   justify-content: space-between;
   height: 94px;
   margin: 32px 0;
+  margin-left: 11px;
 }
 
 .cad-prod-ctn .formulario .title h2 {
@@ -54,7 +57,8 @@
 
 .cad-prod-ctn .formulario .title p {
   font-family: Inter;
-  color: var(--neutral-1);
+  color: var(--neutral-4);
+  transition: 0.2s;
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
@@ -63,6 +67,12 @@
 
 .cad-prod-ctn .formulario .title p span {
   color: var(--color-green);
+  cursor: pointer;
+  transition: 0.25s;
+}
+
+.cad-prod-ctn .formulario .title p span:hover {
+  color: var(--color-orange);
 }
 
 /* INPUTS */
@@ -80,7 +90,10 @@
 }
 
 .cad-prod-ctn .formulario .inputs .entrada input {
+  transition: 0.2s;
+  color: var(--primary-black);
   margin: 15px 0;
+  padding: 5px;
   width: 100%;
   height: 40px;
   margin: 0;
@@ -92,6 +105,10 @@
 
 /* BOTAO */
 .cad-prod-ctn .botao {
+  color: var(--primary-white);
+  transition: 0.2s;
+  font-weight: 500;
+  letter-spacing: 1px;
   display: flex;
   width: 311px;
   height: 48px;
@@ -100,7 +117,11 @@
   align-items: center;
   gap: 8px;
   border-radius: 8px;
-  background: var(--neutral-4);
+  background-color: var(--neutral-4);
+}
+
+.cad-prod-ctn .botao:hover {
+  box-shadow: var(--shadow-color);
 }
 
 @media (min-width: 992px) {

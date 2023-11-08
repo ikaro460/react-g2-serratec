@@ -44,14 +44,14 @@ export default function ProductCard({ produto }) {
 
       <div className="produto-preco">
         <h3>{produto.nome}</h3>
-        <p>${produto.valor_unitario}</p>
+        <p>$ {produto.valor_unitario}</p>
 
         <div className="botoes">
           <button className="botao" type="button" onClick={editarProduto}>
-            Editar
+            <i className="bi bi-pencil"></i>
           </button>
           <button className="botao red" onClick={deletarProduto}>
-            Excluir
+            <i className="bi bi-trash3-fill"></i>
           </button>
         </div>
       </div>

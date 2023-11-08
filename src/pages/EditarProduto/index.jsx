@@ -7,9 +7,9 @@ import NavBarBs from "../../components/NavBarBs";
 import saxofone from "../../assets/saxophone-white-background.png";
 import { AuthContext } from "../../context/AuthContext";
 
-export default function EditarProduto() {
+export default function EditarProduto({}) {
   const { id } = useParams();
-  const { produtos } = useContext(AuthContext);
+  const { produtos, getProdutos } = useContext(AuthContext);
   const produto = produtos.find((item) => item.id_produto === id);
 
   const [formData, setFormData] = useState({
@@ -59,7 +59,7 @@ export default function EditarProduto() {
       <NavBarBs />
       <section className="edit-prod-section">
         <div className="img-ctn">
-          <img src={saxofone} />
+          <img src={formData.imagem} />
         </div>
 
         <form className="formulario">
