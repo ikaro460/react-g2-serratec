@@ -12,6 +12,7 @@ export default function Login() {
   const [senha, setSenha] = useState("");
   const [users, setUsers] = useState([]);
   const { logar, deslogar } = useContext(AuthContext);
+  const [mensagemErro, setMensagemErro] = useState("");
 
   async function getUsuarios() {
     try {
@@ -32,6 +33,7 @@ export default function Login() {
 
   // function entrar(){}
   const entrar = () => {
+    getUsuarios();
     const matchingClientes = users.filter((cliente) => {
       if (login === cliente.email && senha === cliente.senha) {
         const info = {
@@ -50,22 +52,24 @@ export default function Login() {
       }
     });
 
-    if (matchingClientes.length === 0) {
-      console.log("Login ou senha inválidos!");
-    } else if (login === "" || senha === "") {
-      console.log("Preencha os campos de login e senha");
+    if (login.length > 0 || senha.length > 0) {
+      console.log(login, senha, users);
+      setMensagemErro("Login ou senha inválidos!");
+    } else if (matchingClientes.length === 0) {
+      setMensagemErro("Preencha os campos de login e senha");
     }
   };
 
   return (
     <div className="lgn-ctn">
-      <NavBarBs />
+      <NavBarBs publicRoute={true} />
       <section className="lgn-section">
         <div className="img-ctn">
           <img src={saxofone} />
         </div>
 
         <form className="formulario">
+          <div className="mensagem-erro">{mensagemErro}</div>
           <div className="title">
             <h2>Login</h2>
             <p>

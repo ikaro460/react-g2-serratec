@@ -1,15 +1,42 @@
 @import "../../styles/global.css";
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css");
+
+.produto-card {
+  margin: 12px;
+  transition: 0.3s;
+  border: 1px solid transparent;
+  border-radius: 7px;
+  background-color: var(--branco-fundo);
+  padding: 15px;
+}
+
+.produto-card:hover {
+  box-shadow: 0px 0px 24px -1px rgba(0, 0, 0, 0.93);
+}
 
 .produto-imagem {
+  display: flex;
   text-align: center;
   width: 262px;
-  height: 349px;
+  height: 315px;
   overflow: hidden;
 }
 
 .produto-imagem img {
   width: 100%;
   object-fit: contain;
+}
+
+.produto-preco,
+.stars {
+  transition: 0.2s;
+  color: var(--primary-black);
+}
+
+.stars {
+  display: flex;
+  letter-spacing: 2px;
+  font-size: 12px;
 }
 
 .produto-preco h3 {
@@ -28,19 +55,42 @@
   line-height: 22px;
 }
 
-.produto-card {
-  margin: 12px;
+/* BOTAO */
+
+.botoes {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
-/* BOTAO */
-.lgn-ctn .botao {
+.botoes .botao {
+  color: var(--primary-white);
+  transition: 0.2s;
+  font-weight: 500;
+  letter-spacing: 1px;
   display: flex;
-  width: 311px;
+  width: 30%%;
   height: 48px;
   padding: 10px 40px;
+  margin-top: 5px;
   justify-content: center;
   align-items: center;
-  gap: 8px;
-  border-radius: 8px;
-  background: var(--neutral-4);
+  border-radius: 4px;
+  border: 1px solid transparent;
+  background-color: var(--neutral-4);
+}
+
+.botoes .botao:hover {
+  border: 1px solid var(--color-red);
+}
+
+.botoes .red {
+  background-color: var(--color-red);
+}
+
+@media (max-width: 991px) {
+  .produto-imagem {
+    width: 230px;
+    height: 230px;
+  }
 }

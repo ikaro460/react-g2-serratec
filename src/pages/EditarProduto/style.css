@@ -44,6 +44,7 @@
   justify-content: space-between;
   height: 94px;
   margin: 32px 0;
+  margin-left: 11px;
 }
 
 .edit-prod-ctn .formulario .title h2 {
@@ -57,6 +58,7 @@
 .edit-prod-ctn .formulario .title p {
   font-family: Inter;
   color: var(--neutral-4);
+  transition: 0.2s;
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
@@ -104,6 +106,9 @@
 /* BOTAO */
 .edit-prod-ctn .botao {
   color: var(--primary-white);
+  transition: 0.2s;
+  font-weight: 500;
+  letter-spacing: 1px;
   display: flex;
   width: 311px;
   height: 48px;
@@ -116,7 +121,7 @@
 }
 
 .edit-prod-ctn .botao:hover {
-  border: 1px solid black;
+  box-shadow: var(--shadow-color);
 }
 
 @media (min-width: 992px) {

@@ -1,10 +1,9 @@
-import React, { useEffect } from "react";
-import { useState } from "react";
+import React, { useState } from "react";
 import { useNavigate, useParams, useLocation } from "react-router-dom";
 import "./style.css";
 import { api } from "../../services/api";
 import NavBarBs from "../../components/NavBarBs";
-import saxofone from "../../assets/saxophone.png";
+import saxofone from "../../assets/instrumentos/lesPaul1.png";
 
 export default function Cadastro() {
   const [formData, setFormData] = useState({
@@ -13,37 +12,48 @@ export default function Cadastro() {
     senha: "",
     pedidos: [],
   });
+
+  const [mensagemErro, setMensagemErro] = useState(""); // Novo estado para a mensagem de erro
+
   const navigate = useNavigate();
   const { parametro } = useParams();
   const { state } = useLocation();
 
   const cadastrar = async () => {
-    if (
-      formData.nome === "" ||
-      formData.email === "" ||
-      formData.senha === ""
-    ) {
-      console.log("Preencha os campos de login e senha");
+    if (formData.nome == "" || formData.email == "" || formData.senha == "") {
+      console.log("Preencha todos os campos");
+      setMensagemErro("Preencha todos os campos");
     } else {
       try {
-        const data = await api.post("cliente", formData);
-        console.log("Login efetuado com sucesso!");
-        navigate("/login");
+        const existingUser = await api.get(`cliente?email=${formData.email}`);
+
+        if (existingUser.data.length > 0) {
+          setMensagemErro("Email já cadastrado");
+        } else {
+          const data = await api.post("cliente", formData);
+          console.log("Cadastro efetuado com sucesso!");
+          navigate("/");
+        }
       } catch (err) {
         console.log(err);
+        setMensagemErro(
+          "Ocorreu um erro ao cadastrar. Tente novamente mais tarde."
+        );
       }
     }
   };
 
   return (
     <div className="cadastro-ctn">
-      <NavBarBs />
+      <NavBarBs publicRoute={true} />
       <section className="cadastro-section">
         <div className="img-ctn">
-          <img src={saxofone} />
+          <img src={saxofone} alt="Imagem do Saxofone" />
         </div>
 
         <form className="formulario">
+          {mensagemErro && <div className="mensagem-erro">{mensagemErro}</div>}
+
           <div className="title">
             <h2>Cadastro</h2>
             <p>

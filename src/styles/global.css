@@ -4,11 +4,14 @@
 :root {
   font-family: Inter, sans-serif;
 
-  /* NEUTRAS */
-  --neutral-1: #6c7275;
-  --neutral-2: #343839;
-  --neutral-3: #232627;
-  --neutral-4: #141718;
+  /* BRANCOS */
+  --branco-1: #ffffff;
+  --branco-2: #f5f5f5;
+  --branco-3: #e0e0e0;
+  --branco-4: #f0f0f0;
+  --branco-5: #fffff0;
+
+  --branco-fundo: #f3f5f7;
 
   /* Cores de destaque (exemplo) */
   --color-red: #ff5630;
@@ -20,6 +23,7 @@
 [data-theme="light"] {
   --primary-white: #fdfdfd;
   --primary-black: #0f0f0f;
+  --branco-fundo: #f3f5f7;
 
   /* NEUTRAS */
   --neutral-1: #6c7275;
@@ -33,6 +37,7 @@
 [data-theme="dark"] {
   --primary-white: #0f0f0f;
   --primary-black: #fefefe;
+  --branco-fundo: #101010;
 
   /* NEUTRAS */
   --neutral-4: #6c7275;
@@ -46,4 +51,10 @@
 body {
   background-color: var(--primary-white);
   transition: 0.2s;
+}
+
+/* MENSAGEM DE ERRO */
+.mensagem-erro {
+  transition: 0.2s;
+  color: var(--color-red);
 }

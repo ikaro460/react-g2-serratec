@@ -1,5 +1,4 @@
-import React, { useEffect } from "react";
-import { useState } from "react";
+import React, { useState } from "react";
 import { useNavigate, useParams, useLocation } from "react-router-dom";
 import "./style.css";
 import { api } from "../../services/api";
@@ -13,6 +12,7 @@ export default function CadastroProduto() {
     valor_unitario: "",
     imagem: "",
   });
+  const [mensagemErro, setMensagemErro] = useState(""); // Novo estado para a mensagem de erro
   const navigate = useNavigate();
   const { parametro } = useParams();
   const { state } = useLocation();
@@ -37,14 +37,21 @@ export default function CadastroProduto() {
       formData.descricao === "" ||
       formData.valor_unitario === ""
     ) {
-      console.log("Preencha todos os campos.");
+      setMensagemErro("Preencha todos os campos.");
     } else {
       try {
-        const data = await api.post("produto", formData);
-        console.log("Produto cadastrado com sucesso!");
-        navigate("/");
+        const existingProduct = await api.get(`produto?nome=${formData.nome}`);
+
+        if (existingProduct.data.length > 0) {
+          setMensagemErro("Produto já cadastrado.");
+        } else {
+          const data = await api.post("produto", formData);
+          console.log("Produto cadastrado com sucesso!");
+          navigate("/");
+        }
       } catch (err) {
         console.log(err);
+        setMensagemErro("Ocorreu um erro ao cadastrar. Tente novamente mais tarde.");
       }
     }
   };
@@ -54,10 +61,15 @@ export default function CadastroProduto() {
       <NavBarBs />
       <section className="cad-prod-section">
         <div className="img-ctn">
-          <img src={saxofone} />
+          <img src={saxofone} alt="Imagem de Saxofone" />
         </div>
 
         <form className="formulario">
+          {mensagemErro && (
+            <div className="mensagem-erro">
+              {mensagemErro}
+            </div>
+          )}
           <div className="title">
             <h2>Cadastro de produtos</h2>
           </div>
@@ -85,7 +97,7 @@ export default function CadastroProduto() {
             <div className="entrada">
               <input
                 type="text"
-                placeholder="Preço(R$)"
+                placeholder="Preço (R$)"
                 value={formData.valor_unitario}
                 onChange={(e) =>
                   setFormData({ ...formData, valor_unitario: e.target.value })
